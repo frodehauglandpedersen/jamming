@@ -1,0 +1,26 @@
+// Checklist
+const clientId = '26e2992c0de34b808f64df62f23910e7';
+const clientSecret = 'e02f55e346914bd7890eb3de55edffec';
+
+
+
+// features
+
+login
+Search
+SearchList
+Playlist 
+- Add / Remove from Playlist
+- Playlist title
+- Save Playlist
+
+
+
+// Components
+
+App
+Search
+SearchResults
+PlayList
+TrackList
+Track
