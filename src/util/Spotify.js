@@ -44,15 +44,16 @@ let Spotify = {
                 throw new Error('Request failed');
             }, networkError => console.log(networkError.message)
             ).then(jsonResponse => {
-                jsonResponse.tracks.items.map(track => {
+                return jsonResponse.tracks.items.map(track => {
                     console.log(jsonResponse.tracks.items[1]);
                     return {
                         id: track.id,
                         name: track.name,
                         artist: track.artists[0].name,
                         album: track.album.name,
-                        uri: track.uri,
+                        uri: track.uri
                     }
+                    
                 });
             }
             )
