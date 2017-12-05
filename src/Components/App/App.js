@@ -1,6 +1,3 @@
-
-
-
 import React from 'react';
 import './App.css';
 import Search from '../Search/Search';
@@ -25,13 +22,11 @@ class App extends React.Component {
   }
 
   addTrack(track) {
-    //  if(track.id) task 41. Tror det er endel funky greier her.
     let pushTrack = this.state.playlistTracks.push(track);
-    this.setState({ pushTrack });    
+    this.setState({ pushTrack });
   }
 
   removeTrack(track) {
-    // steg 49 må fikses. Denne er feil.
     let findSong = track.id;
     let removeIt = this.state.playlistTracks.pop(findSong);
     this.setState({ removeIt });
@@ -41,26 +36,18 @@ class App extends React.Component {
     this.setState({ playlistName: name });
   }
 
-   savePlaylist() {
-   let trackURIs = [];
+  savePlaylist() {
+    let trackURIs = [];
     this.state.playlistTracks.forEach(track => trackURIs.push(track.uri));
     console.log("lagrer spilleliste");
     Spotify.savePlaylist(this.state.playlistName, trackURIs);
-    this.setState({playlistName:'Ny spilleliste', playlistTracks: [], });
+    this.setState({ playlistName: 'Ny spilleliste', playlistTracks: [], });
   }
-
-  
-
 
   search(term) {
     console.log(term);
-    Spotify.search(term).then(searchResults => this.setState({searchResults: searchResults}));
-
-  } 
-
-
-
-
+    Spotify.search(term).then(searchResults => this.setState({ searchResults: searchResults }));
+  }
 
   render() {
     return (
@@ -77,8 +64,5 @@ class App extends React.Component {
     );
   }
 }
-
-//this.state = { searchResults: [{ name: "Song", artist: "Artist", album: "Album", id: 'ID', }], }
-
 
 export default App;

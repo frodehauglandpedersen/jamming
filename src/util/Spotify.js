@@ -3,7 +3,6 @@ let accessToken = '';
 const redirectUri = 'http://localhost:3000/';
 const url = window.location.href;
 
-
 let Spotify = {
     getAccessToken: function (term) {
         console.log("greien starter");
@@ -30,7 +29,7 @@ let Spotify = {
     },
 
     search: function (term) {
-        console.log("søkefunksjon starter, men uten accessToken tydeligvis. Edit: funker nå");
+        console.log("søkefunksjon starter");
         let spotifyEndpoint = `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?type=track&q=${term}&limit=5`;
         // Magien skjer her, at vi endelig får tilgang til accessToken
         this.getAccessToken(term);
@@ -45,7 +44,6 @@ let Spotify = {
             }, networkError => console.log(networkError.message)
             ).then(jsonResponse => {
                 return jsonResponse.tracks.items.map(track => {
-                    console.log(jsonResponse.tracks.items[1]);
                     return {
                         id: track.id,
                         name: track.name,
@@ -53,7 +51,7 @@ let Spotify = {
                         album: track.album.name,
                         uri: track.uri
                     }
-                    
+
                 });
             }
             )
@@ -61,7 +59,6 @@ let Spotify = {
 
     savePlaylist(playlistName, trackUri) {
         if (playlistName && trackUri) {
-
         } else return;
 
         let userID = '';
