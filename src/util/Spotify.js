@@ -64,20 +64,19 @@ let Spotify = {
         let userID = '';
         const meEndpoint = 'https://api.spotify.com/v1/me';
         fetch(meEndpoint, {
-            headers: { Authorization: `Bearer ${accessToken}`, },
+            headers: { Authorization: `Bearer ${accessToken}` },
         }).then(response => {
             if (response.ok) {
                 return response.json()
             }
         }).then(jsonResponse => {
             userID = jsonResponse.id;
-
             const playlistCreateURL = `https://api.spotify.com/v1/users/${userID}/playlists`;
             let playlistID = '';
             fetch(playlistCreateURL, {
                 method: 'POST',
-                headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json', },
-                body: JSON.stringify({ name: playlistName, }),
+                headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: playlistName }),
             }
             ).then(response => {
                 if (response) {
@@ -89,16 +88,13 @@ let Spotify = {
                 const addToPlaylistURL = `https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`;
                 fetch(addToPlaylistURL, {
                     method: 'POST',
-                    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json', },
+                    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
                     body: JSON.stringify({ uris: trackUri, }),
                 })
             });
         });
     },
-
 }
-
-
 
 
 export default Spotify;
