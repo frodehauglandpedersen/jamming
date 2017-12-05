@@ -32,7 +32,9 @@ class App extends React.Component {
 
   removeTrack(track) {
     // steg 49 må fikses. Denne er feil.
-    delete this.playlistTracks.track;
+    let findSong = track.id;
+    let removeIt = this.state.playlistTracks.pop(findSong);
+    this.setState({ removeIt });
   }
 
   updatePlaylistName(name) {
